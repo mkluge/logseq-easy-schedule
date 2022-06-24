@@ -1,6 +1,6 @@
 import "@logseq/libs";
 
-function main() {
+async function main() {
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   for (let i = 1; i < 15; i++) {
     logseq.Editor.registerSlashCommand("+" + i + "d", async () => {
