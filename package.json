@@ -1,0 +1,11 @@
+{
+  "name": "easy-schedule",
+  "version": "0.0.1",
+  "author": "yetiklee",
+  "main": "index.html",
+  "description": "easy commands for scheduling things", 
+  "logseq": {
+    "icon": "./icon.png",
+    "id": "easy-schedule"
+  }
+}
