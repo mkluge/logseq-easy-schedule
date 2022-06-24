@@ -1,2 +1,6 @@
 easy-schedule.zip
 easy-schedule/*
+dist/
+node_modules/
+.vscode
+.parcel*
