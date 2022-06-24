@@ -2,7 +2,7 @@ import "@logseq/libs";
 
 async function main() {
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  for (let i = 1; i < 9; i++) {
+  for (let i = 0; i < 14; i++) {
     logseq.Editor.registerSlashCommand("wait" + i + "d", async () => {
       var result = new Date();
       result.setDate(result.getDate() + i);
