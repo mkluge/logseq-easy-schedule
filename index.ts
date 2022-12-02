@@ -8,14 +8,21 @@ async function main() {
       result.setDate(result.getDate() + i);
       let datum = result.toISOString().substring(0, 10);
       datum += " " + days[result.getDay()];
-      const newContent =
+      const dueDate =
         `
 SCHEDULED: <` +
         datum +
         ">";
-      await logseq.Editor.insertAtEditingCursor(newContent);
+        const currentBlock = await logseq.Editor.getCurrentBlock();
+        if( currentBlock ) {
+          console.log(currentBlock);
+          const newContent = "TODO " + currentBlock.content + dueDate;
+          await logseq.Editor.updateBlock( currentBlock.uuid, newContent);
+          //await logseq.Editor.exitEditingMode();
+        }
     });
   }
 }
 
+console.log("startup logseq easy schedule")
 logseq.ready(main).catch(console.error);
