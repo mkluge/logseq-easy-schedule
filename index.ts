@@ -14,8 +14,10 @@ SCHEDULED: <` +
         datum +
         ">";
         const currentBlock = await logseq.Editor.getCurrentBlock();
+        console.log("trigger easy")
+        console.log(currentBlock);
         if( currentBlock ) {
-          //console.log(currentBlock);
+          console.log(currentBlock);
           const newContent = "TODO " + currentBlock.content + dueDate;
           await logseq.Editor.updateBlock( currentBlock.uuid, newContent);
           //await logseq.Editor.exitEditingMode();
