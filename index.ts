@@ -13,6 +13,7 @@ async function main() {
 SCHEDULED: <` +
         datum +
         ">";
+        await logseq.Editor.saveFocusedCodeEditorContent();
         const currentBlock = await logseq.Editor.getCurrentBlock();
         console.log("trigger easy")
         console.log(currentBlock);
