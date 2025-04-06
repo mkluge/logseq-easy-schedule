@@ -13,15 +13,22 @@ async function main() {
 SCHEDULED: <` +
         datum +
         ">";
-        await logseq.Editor.saveFocusedCodeEditorContent();
         const currentBlock = await logseq.Editor.getCurrentBlock();
-        console.log("trigger easy")
-        console.log(currentBlock);
+        console.log("running");
+        await logseq.Editor.exitEditingMode();
         if( currentBlock ) {
-          console.log(currentBlock);
-          const newContent = "TODO " + currentBlock.content + dueDate;
-          await logseq.Editor.updateBlock( currentBlock.uuid, newContent);
-          //await logseq.Editor.exitEditingMode();
+          console.log(currentBlock)
+          logseq.Editor.getBlock(currentBlock.uuid).then( async (block) => {
+            console.log("editing ...");
+            console.log(block);
+            const newContent = "TODO " + block?.content + dueDate;
+            const parent = block?.parent;
+            console.log(newContent);
+            await logseq.Editor.editBlock(currentBlock.uuid);
+            await logseq.Editor.updateBlock( currentBlock.uuid, newContent);
+            const newblock = await logseq.Editor.getBlock(currentBlock.uuid);
+            console.log(block);
+          });
         }
     });
   }
