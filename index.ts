@@ -10,28 +10,18 @@ async function main() {
       datum += " " + days[result.getDay()];
       const dueDate =
         `
-SCHEDULED: <` +
-        datum +
-        ">";
-        const currentBlock = await logseq.Editor.getCurrentBlock();
+SCHEDULED: <` + datum + ">";
+        const { content, uuid } = await logseq.Editor.getCurrentBlock()
         console.log("running");
-        await logseq.Editor.exitEditingMode();
-        if( currentBlock ) {
-          console.log(currentBlock)
-          logseq.Editor.getBlock(currentBlock.uuid).then( async (block) => {
-            console.log("editing ...");
-            console.log(block);
-            const newContent = "TODO " + block?.content + dueDate;
-            const parent = block?.parent;
-            console.log(newContent);
-            await logseq.Editor.editBlock(currentBlock.uuid);
-            await logseq.Editor.updateBlock( currentBlock.uuid, newContent);
-            const newblock = await logseq.Editor.getBlock(currentBlock.uuid);
-            console.log(block);
-          });
-        }
-    });
-  }
+//        await logseq.Editor.exitEditingMode();
+        if( uuid ) {
+          console.log(content)
+          console.log("editing ...");
+          const newContent = "TODO " + content + dueDate;
+          await logseq.Editor.updateBlock( uuid, newContent);
+          }
+        });
+    }
 }
 
 console.log("startup logseq easy schedule")
