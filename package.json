@@ -1,6 +1,6 @@
 {
   "name": "easy-schedule",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "yetiklee",
   "main": "index.html",
   "description": "easy commands for scheduling things",
@@ -18,7 +18,7 @@
     "build": "parcel build --public-url . --no-source-maps index.html"
   },
   "devDependencies": {
-    "@logseq/libs": "^0.0.17",
+    "@logseq/libs": "^0.2.12",
     "parcel": "^2.8.3"
   }
 }
